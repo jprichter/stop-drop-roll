@@ -350,7 +350,7 @@ export default function SearchPage() {
                 const center = ev.detail.center;
                 setCurrentMapCenter(center);
                 // Only show if user moved the map and we are past initial load
-                if (ev.detail.isUserInput && isLoaded) {
+                if (ev.domEvent && isLoaded) {
                   setShowSearchAreaButton(true);
                 }
               }}
