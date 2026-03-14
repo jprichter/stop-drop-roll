@@ -59,7 +59,7 @@ describe('FilterPanel', () => {
       />
     );
 
-    const noGiButton = screen.getByText('No-Gi');
+    const noGiButton = screen.getByText('no-gi');
     fireEvent.click(noGiButton);
 
     // Should call setFilters with the new style added

@@ -36,7 +36,8 @@ export async function POST(request: Request) {
     const sanitizedGym = {
       google_place_id: String(selectedPlace.place_id),
       drop_in_fee_cents: typeof gymDetails?.dropInFeeCents === 'number' ? gymDetails.dropInFeeCents : null,
-      cash_only: Boolean(gymDetails?.cashOnly),
+      cash_only: Array.isArray(gymDetails?.paymentMethods) ? gymDetails.paymentMethods.includes('Cash') : false,
+      payment_methods: Array.isArray(gymDetails?.paymentMethods) ? gymDetails.paymentMethods : [],
       waiver_type: ['none', 'online', 'in_person'].includes(gymDetails?.waiverType) ? gymDetails.waiverType : 'none',
       has_shower: Boolean(gymDetails?.hasShower),
       locker_type: ['none', 'free', 'bring_lock'].includes(gymDetails?.lockerType) ? gymDetails.lockerType : 'none',

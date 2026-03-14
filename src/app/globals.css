@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --caballero-pink: #ff1493;
+  --primary-green: #39ff14;
+  --accent-pink: #ff1493;
+  --grip-tape: #1a1a1a;
+  --neon-green: #39ff14;
+  --text-light: #f4f4f4;
 }
 
 @theme inline {
@@ -10,6 +16,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-russo: var(--font-russo-one);
+  --font-archivo: var(--font-archivo);
+  
+  --color-caballero-pink: var(--caballero-pink);
+  --color-primary-green: var(--primary-green);
+  --color-grip-tape: var(--grip-tape);
+  --color-neon-green: var(--neon-green);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +35,40 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
 }
 
+.font-russo {
+  font-family: var(--font-russo-one);
+}
+
+.font-archivo {
+  font-family: var(--font-archivo);
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--grip-tape);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--caballero-pink);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

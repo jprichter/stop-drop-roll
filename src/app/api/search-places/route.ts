@@ -76,14 +76,18 @@ export async function GET(request: Request) {
     } else {
       console.log("Cache miss for:", queryKey.substring(0, 50));
       // 3. Fetch from Google if miss
-      // Removed strict &type=gym to catch "Martial Arts School" and other categories
       let placesApiUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${googlePlacesApiKey}`;
       
+      const userQuery = textQuery || "";
+      const needsHint = !userQuery.toLowerCase().includes("jiu jitsu") && !userQuery.toLowerCase().includes("bjj");
+      const searchHint = needsHint ? " jiu jitsu" : "";
+
       if (lat && lng) {
-        const query = textQuery ? `${textQuery} jiu jitsu gym` : "jiu jitsu gym";
+        const query = userQuery ? `${userQuery}${searchHint}` : "jiu jitsu gym";
         placesApiUrl += `&query=${encodeURIComponent(query)}&location=${lat},${lng}&radius=${distance * 1609}`;
       } else {
-        placesApiUrl += `&query=${encodeURIComponent(textQuery + " jiu jitsu gym")}`;
+        const query = userQuery ? `${userQuery}${searchHint}` : "jiu jitsu gym";
+        placesApiUrl += `&query=${encodeURIComponent(query)}`;
       }
 
       const response = await fetch(placesApiUrl);

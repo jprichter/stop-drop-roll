@@ -64,6 +64,23 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Database error recording claim" }, { status: 500 });
     }
 
+    // 3. Send Notification (Optional/Best Effort)
+    const webhookUrl = process.env.NOTIFICATION_WEBHOOK_URL;
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            content: `🔔 **New Gym Claim Received!**\n**Gym:** ${gymName}\n**Method:** ${method}\n**ID:** ${externalIdentifier}\n**Place ID:** ${googlePlaceId}`,
+          }),
+        });
+      } catch (err) {
+        console.error("Failed to send notification:", err);
+        // We don't fail the request if the notification fails
+      }
+    }
+
     return NextResponse.json({ message: "Claim submitted successfully" });
   } catch (error: any) {
     console.error("Claim API error:", error);

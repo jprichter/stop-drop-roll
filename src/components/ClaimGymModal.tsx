@@ -52,14 +52,14 @@ export const ClaimGymModal = ({ place, onClose }: ClaimGymModalProps) => {
 
   if (isSuccess) {
     return (
-      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[1000] p-4">
-        <div className="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl text-center animate-in zoom-in-95 duration-300">
+      <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-[1000] p-4">
+        <div className="bg-[#1a1a1a] border-2 border-[#ff1493] rounded-3xl max-w-md w-full p-8 shadow-[0_0_50px_rgba(255,20,147,0.3)] text-center animate-in zoom-in-95 duration-300">
           <div className="text-5xl mb-4">🚀</div>
-          <h2 className="text-2xl font-black mb-2 text-gray-900">Claim Received!</h2>
-          <p className="text-gray-600 mb-8">We'll reach out via {method} to verify ownership and unlock your dashboard.</p>
+          <h2 className="text-3xl font-russo mb-2 text-white uppercase tracking-tighter">Claim Received!</h2>
+          <p className="text-gray-400 mb-8 font-black uppercase text-xs">We&apos;ll reach out via {method} to verify ownership and unlock your dashboard.</p>
           <button 
             onClick={onClose}
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-lg active:scale-95"
+            className="w-full py-4 bg-[#39ff14] hover:bg-[#32e612] text-[#1a1a1a] rounded-xl font-russo transition-all shadow-[0_4px_0_rgb(34,197,94)] active:translate-y-[2px] active:shadow-none uppercase"
           >
             Great, thanks!
           </button>
@@ -69,33 +69,33 @@ export const ClaimGymModal = ({ place, onClose }: ClaimGymModalProps) => {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[1000] p-4">
-      <div className="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl animate-in zoom-in-95 duration-300">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-black text-gray-900 tracking-tight">Claim {place.name}</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-900 text-2xl">✕</button>
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-[1000] p-4">
+      <div className="bg-[#1a1a1a] border-2 border-[#ff1493] rounded-3xl max-w-md w-full p-8 shadow-[0_0_50px_rgba(255,20,147,0.3)] animate-in zoom-in-95 duration-300">
+        <div className="flex justify-between items-center mb-6 border-b border-gray-800 pb-4">
+          <h2 className="text-2xl font-russo text-white tracking-tighter uppercase">Claim {place.name}</h2>
+          <button onClick={onClose} className="text-gray-500 hover:text-[#ff1493] text-2xl transition-colors">✕</button>
         </div>
 
-        <p className="text-gray-600 mb-8 text-sm italic border-l-4 border-blue-500 pl-4 bg-blue-50 py-2 rounded-r-lg font-medium">
+        <p className="text-gray-400 mb-8 text-xs italic border-l-4 border-[#39ff14] pl-4 bg-black/20 py-2 rounded-r-lg font-black uppercase tracking-tighter">
           Owner management is entering early access. Provide your details to get verified.
         </p>
 
         <div className="space-y-6">
           <div className="space-y-3">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Verification Method</span>
+            <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Verification Method</span>
             <div className="flex gap-2">
               <button
                 onClick={() => setMethod("instagram")}
-                className={`flex-1 py-3 rounded-xl border-2 font-bold transition-all ${
-                  method === "instagram" ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm" : "border-gray-100 text-gray-400 grayscale opacity-60"
+                className={`flex-1 py-3 rounded-xl border-2 font-black transition-all uppercase text-xs ${
+                  method === "instagram" ? "border-[#ff1493] bg-[#ff1493]/10 text-[#ff1493] shadow-sm" : "border-gray-800 text-gray-600 grayscale opacity-60"
                 }`}
               >
                 📸 Instagram
               </button>
               <button
                 onClick={() => setMethod("sms")}
-                className={`flex-1 py-3 rounded-xl border-2 font-bold transition-all ${
-                  method === "sms" ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm" : "border-gray-100 text-gray-400 grayscale opacity-60"
+                className={`flex-1 py-3 rounded-xl border-2 font-black transition-all uppercase text-xs ${
+                  method === "sms" ? "border-[#ff1493] bg-[#ff1493]/10 text-[#ff1493] shadow-sm" : "border-gray-800 text-gray-600 grayscale opacity-60"
                 }`}
               >
                 📱 SMS
@@ -104,7 +104,7 @@ export const ClaimGymModal = ({ place, onClose }: ClaimGymModalProps) => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest">
+            <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">
               {method === "instagram" ? "Your @Handle" : "Your Phone Number"}
             </label>
             <input
@@ -112,16 +112,16 @@ export const ClaimGymModal = ({ place, onClose }: ClaimGymModalProps) => {
               placeholder={method === "instagram" ? "@gym_name" : "+1 (555) 000-0000"}
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold text-gray-900 placeholder:text-gray-500"
+              className="w-full px-4 py-3 bg-[#1a1a1a] border-2 border-gray-800 rounded-xl focus:ring-4 focus:ring-[#39ff14]/10 focus:border-[#39ff14] outline-none transition-all font-black text-white placeholder:text-gray-700 uppercase"
             />
           </div>
 
-          {error && <p className="text-red-600 text-xs font-bold bg-red-50 p-3 rounded-lg border border-red-100 animate-in shake duration-300">⚠️ {error}</p>}
+          {error && <p className="text-red-500 text-xs font-black bg-red-950 p-3 rounded-lg border-2 border-red-500 animate-in shake duration-300 uppercase">⚠️ {error}</p>}
 
           <button
             onClick={handleSubmit}
             disabled={isSubmitting || !identifier}
-            className="w-full py-4 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white rounded-2xl font-black text-lg transition-all shadow-xl active:scale-95 flex items-center justify-center gap-2"
+            className="w-full py-4 bg-[#39ff14] hover:bg-[#32e612] disabled:opacity-50 text-[#1a1a1a] rounded-2xl font-russo text-lg transition-all shadow-[0_4px_0_rgb(34,197,94)] active:translate-y-[2px] active:shadow-none flex items-center justify-center gap-2 uppercase"
           >
             {isSubmitting ? "Submitting..." : "Submit Claim ⚡"}
           </button>

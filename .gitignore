@@ -45,3 +45,6 @@ supabase/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+docs/
+playwright-report/
